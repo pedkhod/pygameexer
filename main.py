@@ -15,10 +15,18 @@ pygame.display.set_icon(icon)
 playerX_change=0
 playerImg=pygame.image.load('spaceship.png')
 playerX=370
-playerY=480
+playerY=540
 def player(playerX,playerY):
     screen.blit(playerImg,(playerX,playerY))
-
+#enemy
+enemyX_change=0
+enemyImg=pygame.image.load('enemy.png')
+enemyX=370
+enemyY=50
+def player(playerX,playerY):
+    screen.blit(playerImg,(playerX,playerY))
+def enemy(enemyX,enemyY):
+    screen.blit(enemyImg,(enemyX, enemyY))
 #game loop
 ruuing = True
 while ruuing:
@@ -37,8 +45,12 @@ while ruuing:
                 playerX_change=0
     
     playerX+=playerX_change
-
+    if playerX<=0:
+        playerX= 0
+    elif playerX>=763:
+        playerX=763
     player(playerX,playerY)
-    pygame.display.update()
+    enemy(enemyX, enemyY)
 
+    pygame.display.update()
       
