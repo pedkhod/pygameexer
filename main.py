@@ -21,8 +21,8 @@ playerY=540
 #miisle
 missileY_change=15
 missileImg=pygame.image.load('missile.png')
-missileX=playerX
-missileY=playerY
+missileX=0
+missileY=540
 missile_state='ready'
 def fire_missile(missileX,missileY):
     global missile_state
@@ -53,7 +53,9 @@ while ruuing:
             if event.key==pygame.K_RIGHT:
                 playerX_change=3
             if event.key==pygame.K_SPACE:
-                fire_missile(playerX,missileY)
+                if missile_state is 'ready':
+                    missileX=missileY
+                    fire_missile(missileX,missileY)
                 
         if event.type==pygame.KEYUP:
             if event.key==pygame.K_RIGHT or event.key==pygame.K_LEFT:
